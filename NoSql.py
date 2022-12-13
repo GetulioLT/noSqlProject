@@ -38,34 +38,6 @@ def novoAluno(matricula):
 
 #def verAlunos():
 
-'''Alunos = {"Nome" : "Eduardo", "Idade" : 20, "Turma" : "B", "Matricula" : "0001"}
-
-requisicao = requests.post(f"{link}/Alunos/.json", data= json.dumps(Alunos))
-
-#Alunos = {"Nome" : "João", "Idade" : 19, "Turma" : "A", "Matricula" : "0010"}
-
-requisicao = requests.patch(f"{link}/Alunos/-NJAak5DZGYNEc5PvANi/.json" , data=json.dumps(Alunos))
-requisicao = requests.get(f"{link}/.json")
-
-for i in requisicao.json():
-    for j in requisicao.json()[i]:
-        #print(f"{j} : {requisicao.json()[i][j]}")
-
-        print(j)
-
-        for k in requisicao.json()[i][j]:
-            
-            print(f"{k} : {requisicao.json()[i][j][k]}")
-        
-        print("==============================")
-
-
-requisicao = requests.delete(f"{link}/Alunos/-NJAak5DZGYNEc5PvANi/.json")
-
-print(requisicao)
-print(requisicao.text)'''
-
-
 
 print("Bem Vindo ao Sitema Escolar")
 
