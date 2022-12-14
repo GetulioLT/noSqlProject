@@ -4,7 +4,8 @@ import requests
 mat = requests.get("https://teste-in-getu-default-rtdb.firebaseio.com/.json")
 
 if mat.text == "null":
-    requests.post("https://teste-in-getu-default-rtdb.firebaseio.com/.json", data=json.dumps({"Matricula": 1}))
+    requests.post("https://teste-in-getu-default-rtdb.firebaseio.com/.json",
+                  data=json.dumps({"Matricula": 1}))
 
 mat = requests.get("https://teste-in-getu-default-rtdb.firebaseio.com/.json")
 
@@ -42,10 +43,9 @@ def novoAluno(matricula):
     requests.patch(f"{chaveMat}/.json", data=json.dumps({"Matricula": matricula + 1}))
 
 
-# def apagarAluno():
+def apagarAluno():
+    contador = 0
 
-
-def verAlunos():
     Alunos = requests.get(f"{link}/.json")
 
     for i in Alunos.json():
@@ -55,6 +55,31 @@ def verAlunos():
         for j in Alunos.json()[i]:
             print(f"{j}: {Alunos.json()[i][j]}")
 
+    matricula = int(input("Digite o numero da matricula para deletar: "))
+
+    for i in Alunos.json():
+        for j in Alunos.json()[i]:
+            if matricula == Alunos.json()[i][j]:
+                requests.delete(f"{link}/{i}/.json")
+                contador += 1
+
+    if contador == 0:
+        print("Aluno não encontrado")
+
+
+def verAlunos():
+    Alunos = requests.get(f"{link}/.json")
+
+    if Alunos.text != "null":
+        for i in Alunos.json():
+
+            print("==========================================")
+
+            for j in Alunos.json()[i]:
+                print(f"{j}: {Alunos.json()[i][j]}")
+    else:
+        print("Nenhum Aluno Cadastrado")
+
 
 print("Bem Vindo ao Sitema Escolar")
 
@@ -63,6 +88,7 @@ while True:
                         "1 - Cadastrar novo Aluno\n" +
                         "2 - Ver Todos os Alunos\n" +
                         "3 - Deletar um aluno\n" +
+                        "4 - Resetar sistema\n" +
                         "0 - Sair\n"))
 
     match escolha:
@@ -76,7 +102,18 @@ while True:
             input("==========================================\n" +
                   "Aperte enter para continuar...")
 
+        case 3:
+            apagarAluno()
+            input("Aluno deletado com sucesso, Aperte enter para continuar...")
+
+        case 4:
+            requests.delete("https://teste-in-getu-default-rtdb.firebaseio.com/.json")
+
         case 0:
             break
+
+        case _:
+            print("Essa opção não existe")
+            input("Aperte enter pra continuar...")
 
     print("\n" * 124)
