@@ -1,18 +1,20 @@
 import json
 import requests
 
-mat = requests.get("https://teste-in-getu-default-rtdb.firebaseio.com/.json")
+link_mat = "https://teste-in-getu-default-rtdb.firebaseio.com/"
+
+mat = requests.get(f"{link_mat}.json")
 
 if mat.text == "null":
-    requests.post("https://teste-in-getu-default-rtdb.firebaseio.com/.json",
+    requests.post(f"{link_mat}.json",
                   data=json.dumps({"Matricula": 1}))
 
-mat = requests.get("https://teste-in-getu-default-rtdb.firebaseio.com/.json")
+mat = requests.get(f"{link_mat}.json")
 
 for i in mat.json():
     for j in mat.json()[i]:
         if j == "Matricula":
-            chaveMat = f"https://teste-in-getu-default-rtdb.firebaseio.com/{i}"
+            chaveMat = f"{link_mat}{i}"
 
 matricula = requests.get(f"{chaveMat}/.json").json()["Matricula"]
 link = "https://teste-in-getu-default-rtdb.firebaseio.com/Alunos"
