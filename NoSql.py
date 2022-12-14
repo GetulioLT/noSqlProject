@@ -45,7 +45,15 @@ def novoAluno(matricula):
 # def apagarAluno():
 
 
-# def verAlunos():
+def verAlunos():
+    Alunos = requests.get(f"{link}/.json")
+
+    for i in Alunos.json():
+
+        print("==========================================")
+
+        for j in Alunos.json()[i]:
+            print(f"{j}: {Alunos.json()[i][j]}")
 
 
 print("Bem Vindo ao Sitema Escolar")
@@ -60,8 +68,13 @@ while True:
     match escolha:
         case 1:
             novoAluno(matricula)
-            input("Matricula Feita, Aperte enter para continuar")
+            input("Matricula Feita, Aperte enter para continuar...")
             matricula += 1
+
+        case 2:
+            verAlunos()
+            input("==========================================\n" +
+                  "Aperte enter para continuar...")
 
         case 0:
             break
