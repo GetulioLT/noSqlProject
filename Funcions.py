@@ -1,11 +1,33 @@
+# Bibliotecas necessarias para a conexão e envio de dados para o banco
 import json
 import requests
 
 
+#Função especifica para o cadastro de novo aluno
 def novoAluno(matricula, link, chaveMat):
     nome = input("Digite o nome do aluno: ")
     idade = int(input("Digite a idade do aluno: "))
-    sala = input("Qual a sala do aluno: ")
+    sala = int(input("Qual a sala do aluno:\n" +
+                 "1 - A\n" +
+                 "2 - B\n" +
+                 "3 - C\n"))
+
+
+    while True:
+        if sala in 123:
+            break
+
+        sala = input("Sala inexistente digite novamente: ")
+
+    match sala.upper():
+        case "A":
+            sala = "A"
+
+        case "B":
+            sala = "B"
+
+        case "C":
+            sala = "C"
 
     verificacao = requests.get(f"{link}/.json")
 
@@ -69,7 +91,6 @@ def verAlunos(link):
 
 
 def altAlunos(link):
-
     contador = 0
 
     Alunos = requests.get(f"{link}/.json")
