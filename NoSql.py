@@ -6,6 +6,8 @@ importação da pagina de código das funções.
 # Importação da pag. Funcions
 from Funcions import *
 
+chaveMat = ""
+
 # Conexão do banco de dados
 link = "https://nosql-46e99-default-rtdb.firebaseio.com/"
 
