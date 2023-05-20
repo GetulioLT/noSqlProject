@@ -9,7 +9,7 @@ from Funcions import *
 chaveMat = ""
 
 # Conexão do banco de dados
-link = "https://nosql-46e99-default-rtdb.firebaseio.com/"
+link = "https://acsdwas-default-rtdb.firebaseio.com/"
 
 # link para pegar o valor atual de matricula
 link_mat = link
