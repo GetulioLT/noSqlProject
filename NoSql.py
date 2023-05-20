@@ -7,7 +7,7 @@ importação da pagina de código das funções.
 from Funcions import *
 
 # Conexão do banco de dados
-link = "https://nosql-python-default-rtdb.firebaseio.com/"
+link = "https://nosql-46e99-default-rtdb.firebaseio.com/"
 
 # link para pegar o valor atual de matricula
 link_mat = link
