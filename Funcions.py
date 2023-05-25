@@ -108,12 +108,17 @@ def novoAluno(matricula, link, chaveMat):
     listaMatricula.clear()
 
 
+# Função específica para apagar um aluno
 def apagarAluno(link):
+    # Parametro usuado para confirmar se existe o aluno ou não
     confirmacao = 0
 
+    # Requisição de todos os alunos salvos no sistema
     Alunos = requests.get(f"{link}/.json")
 
+    # Verificação para ver se existe já algum aluno cadastrado
     if Alunos.text != "null":
+        # Laços de repetição resposavel por mostrar todos os alunos do sistema
         for i in Alunos.json():
 
             print("==========================================")
@@ -123,22 +128,32 @@ def apagarAluno(link):
     else:
         print("Nenhum Aluno Cadastrado")
 
+    # Requisição ao usuario a matrícula especifica a ser excluida
     matricula = int(input("Digite o numero da matricula para deletar: "))
 
+    # Verificação se a matrícula condiz com algum aluno cadastrado no sistema
     for i in Alunos.json():
         for j in Alunos.json()[i]:
             if matricula == Alunos.json()[i][j]:
                 requests.delete(f"{link}/{i}/.json")
                 confirmacao += 1
 
+    # Caso aluno não encontrado será informado ao usuario uma mensagem
     if confirmacao == 0:
         print("Aluno não encontrado")
 
 
+"""Essa função funcionará da mesma forma que na função anterior, 
+servirá apenas para mostrar os aluno"""
+
+
 def verAlunos(link):
+    # Requisição de todos os alunos salvos no sistema
     Alunos = requests.get(f"{link}/.json")
 
+    # Verificação para ver se existe já algum aluno cadastrado
     if Alunos.text != "null":
+        # Laços de repetição resposavel por mostrar todos os alunos do sistema
         for i in Alunos.json():
 
             print("==========================================")
