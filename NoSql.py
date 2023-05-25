@@ -6,8 +6,10 @@ importação da pagina de código das funções.
 # Importação da pag. Funcions
 from Funcions import *
 
+chaveMat = ""
+
 # Conexão do banco de dados
-link = "https://vm-nosql-default-rtdb.firebaseio.com/"
+link = "https://acsdwas-default-rtdb.firebaseio.com/"
 
 # link para pegar o valor atual de matricula
 link_mat = link
